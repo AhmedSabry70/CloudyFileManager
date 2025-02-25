@@ -25,6 +25,9 @@
       "^[./]"
     ],
     "importOrderSeparation": true,
-    "importOrderSortSpecifiers": true
+    "importOrderSortSpecifiers": true,
+    "tailwindFunctions": ["clsx"],
+    "tailwindPreserveWhitespace": true,
+    "tailwindPreserveDuplicates": true,
   }
   

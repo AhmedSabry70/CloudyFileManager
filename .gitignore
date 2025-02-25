@@ -19,6 +19,10 @@
 
 # production
 /build
+docs/
+/docs/
+
+
 
 # misc
 .DS_Store
@@ -39,3 +43,117 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Node.js dependencies
+node_modules/
+.pnpm-debug.log*
+
+# Build output
+.next/
+out/
+
+# Static files
+*.log
+*.log.*
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# TypeScript
+*.tsbuildinfo
+
+# TailwindCSS
+tailwind.config.js
+tailwind.config.ts
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Vercel deployment
+.vercel/
+
+# Yarn and npm
+yarn-error.log
+yarn-debug.log*
+npm-debug.log*
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# IDE/Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.swns
+
+# MacOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Figma design assets
+*.fig
+*.sketch
+*.xd
+*.psd
+
+# Images and other assets
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+
+# Debugging and testing
+coverage/
+*.lcov
+*.lcov.*
+.nyc_output/
+debug/
+__tests__/
+__mocks__/
+jest.config.js
+jest.config.ts
+*.snap
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+.cache/
+.cache-loader/
+
+# Linting and formatting
+.eslintcache
+.prettierignore
+.prettiercache
+
+# Miscellaneous
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+*.un~
+*.bak~
+
