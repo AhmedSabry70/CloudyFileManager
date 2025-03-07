@@ -1,33 +1,38 @@
 {
-    "semi": false,
-    "singleQuote": true,
-    "jsxSingleQuote": false,
-    "trailingComma": "all",
-    "bracketSpacing": true,
-    "arrowParens": "avoid",
-    "printWidth": 100,
-    "tabWidth": 2,
-    "useTabs": false,
-    "endOfLine": "lf",
-    "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
-    "importOrder": [
-      "^react",
-      "^next",
-      "<THIRD_PARTY_MODULES>",
-      "",
-      "^@/components/(.*)$",
-      "^@/utils/(.*)$",
-      "^@/hooks/(.*)$",
-      "^@/store/(.*)$",
-      "^@/styles/(.*)$",
-      "^@/config/(.*)$",
-      "",
-      "^[./]"
-    ],
-    "importOrderSeparation": true,
-    "importOrderSortSpecifiers": true,
-    "tailwindFunctions": ["clsx"],
-    "tailwindPreserveWhitespace": true,
-    "tailwindPreserveDuplicates": true,
-  }
-  
+  "semi": false,
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "endOfLine": "lf",
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-organize-imports"
+  ],
+  "importOrder": [
+    "^react",
+    "^next",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/components/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/store/(.*)$",
+    "^@/styles/(.*)$",
+    "^@/config/(.*)$",
+    "",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "tailwindFunctions": [
+    "clsx"
+  ],
+  "tailwindPreserveWhitespace": true,
+  "tailwindPreserveDuplicates": true
+}
