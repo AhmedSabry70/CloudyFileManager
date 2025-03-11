@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react'
 
 import Image from 'next/image'
-
-import { FeatureAnimatedCard, Sparkles } from '@/components/FeatureAnimatedCard'
 import Logo from '@/components/Logo'
 
 
@@ -29,15 +27,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
                   className="transition-all hover:scale-105 hover:rotate-2"
                 />
               </div>
-
-              <div className="animate-move absolute  z-40 m-auto h-full w-1 bg-gradient-to-b from-transparent via-cyan-500 to-transparent">
-                <div className="absolute top-1/2 -left-10 h-1/2 w-10 -translate-y-1/2">
-                  <Sparkles />
-                </div>
-              </div>
             </div>
           </div>
-         
         </div>
       </aside>
       <main className="animate-fade-n-scale flex flex-1 flex-col items-center bg-white p-4 py-10 lg:justify-center lg:p-10 lg:py-0">
