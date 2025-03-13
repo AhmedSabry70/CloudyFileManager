@@ -36,6 +36,9 @@
   --radius-sm: calc(var(--radius) - 4px);
 
   /* Keyframes and Animation – generates a utility like animate-caret-blink */
+  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+  --animate-move: move 5s linear infinite;
+
   @keyframes caret-blink {
     0%,
     70%,
@@ -47,7 +50,16 @@
       opacity: 0;
     }
   }
-  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+
+  @keyframes move {
+    0% {
+      transform: translateX(-200px);
+    }
+
+    100% {
+      transform: translateX(200px);
+    }
+  }
 }
 
 @layer base {
@@ -185,16 +197,17 @@
     @apply text-red ml-4 text-[14px] leading-[20px] font-normal;
   }
   .shad-alert-dialog {
-    @apply max-w-[95%] space-y-4 rounded-xl bg-white px-4 py-10 outline-none sm:w-fit md:rounded-[30px] md:px-8;
+    @apply max-w-[95%] space-y-4 rounded-xl bg-white px-4 py-10 outline-none sm:w-fit md:rounded-[30px] md:!px-20;
+    
   }
   .shad-submit-btn {
-    @apply bg-brand hover:bg-brand-100 rounded-full text-[14px] leading-[20px] font-medium transition-all;
+    @apply bg-brand hover:bg-brand-100 rounded-full text-[14px] leading-[20px] font-medium transition-all cursor-pointer;
   }
   .shad-otp {
     @apply flex w-full justify-between gap-1 sm:gap-2;
   }
   .shad-otp-slot {
-    @apply ring-brand shadow-drop-1 text-brand-100 border-light-300 flex size-12 justify-center gap-5 rounded-xl border-2 text-[40px] font-medium md:size-16;
+    @apply  ring-brand shadow-drop-1 text-brand-100 border-light-300 flex size-12 justify-center gap-5 !rounded-xl border-2 text-[40px] !font-medium md:size-16;
   }
 
   .shad-sheet {
