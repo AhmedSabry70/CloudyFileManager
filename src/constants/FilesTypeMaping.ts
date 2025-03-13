@@ -1,6 +1,5 @@
 // Mapping of file extensions to types
 
-
 export const documentExtensions = [
   'pdf', // Portable Document Format
   'doc', // Microsoft Word Document

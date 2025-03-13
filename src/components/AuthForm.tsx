@@ -1,13 +1,13 @@
 'use client'
 
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -15,55 +15,52 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { authFormSchema, SignIn, SignUp } from '@/lib/zodSchema';
-import OTPModal from './OTPModal';
-import { createAccount, signInUser } from '@/lib/actions/user.actions';
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { authFormSchema, SignIn, SignUp } from '@/lib/zodSchema'
+import OTPModal from './OTPModal'
+import { createAccount, signInUser } from '@/lib/actions/user.actions'
 
-
-type FormType = 'sign-in' | 'sign-up';
+type FormType = 'sign-in' | 'sign-up'
 
 const AuthForm = ({ type }: { type: FormType }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [errMsg, setErrMsg] = useState('');
-  const [accountId, setAccountId] = useState<string | null>(null);
-  const [showOTPModal, setShowOTPModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+  const [errMsg, setErrMsg] = useState('')
+  const [accountId, setAccountId] = useState<string | null>(null)
+  const [showOTPModal, setShowOTPModal] = useState(false)
 
-  const defaultValues = type === 'sign-up'
-    ? { fullName: '', email: '' }
-    : { email: '' };
+  const defaultValues = type === 'sign-up' ? { fullName: '', email: '' } : { email: '' }
 
-  const formSchema = authFormSchema(type);
+  const formSchema = authFormSchema(type)
 
-  const form = useForm<SignIn|SignUp>({
+  const form = useForm<SignIn | SignUp>({
     resolver: zodResolver(formSchema),
     defaultValues,
-  });
+  })
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsLoading(true);
-    setErrMsg('');
+    setIsLoading(true)
+    setErrMsg('')
 
     try {
       if (type === 'sign-in') {
-         const {accountId,error} = await signInUser(values as SignIn);
-if(error) console.log(error);
-         
-       setAccountId(accountId);
-        setShowOTPModal(true);
+        const { accountId, error } = await signInUser(values as SignIn)
+        if (error) console.log(error)
+
+        setAccountId(accountId)
+        setShowOTPModal(true)
       } else {
-        const user = await createAccount(values as SignUp);
-        setAccountId(user.accountId);
-        setShowOTPModal(true);
+        const user = await createAccount(values as SignUp)
+        setAccountId(user.accountId)
+        setShowOTPModal(true)
       }
     } catch (err) {
-      console.error(err);
-      setErrMsg('Failed to process your request. Please try again.');
+      console.error(err)
+      setErrMsg('Failed to process your request. Please try again.')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -140,12 +137,16 @@ if(error) console.log(error);
         </form>
       </Form>
 
-      {showOTPModal &&   accountId &&(
-        <OTPModal email={form.getValues('email')} accountId={accountId} isOpen={showOTPModal} setIsOpen={setShowOTPModal}/>
+      {showOTPModal && accountId && (
+        <OTPModal
+          email={form.getValues('email')}
+          accountId={accountId}
+          isOpen={showOTPModal}
+          setIsOpen={setShowOTPModal}
+        />
       )}
     </>
-  );
-};
+  )
+}
 
-export default AuthForm;
-
+export default AuthForm

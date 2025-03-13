@@ -72,8 +72,12 @@ const OTPModal = ({
         <InputOTP maxLength={6} value={secret} onChange={setSecret}>
           <InputOTPGroup className="shad-otp">
             {[...Array(6).keys()].map((num, idx) => (
-              <InputOTPSlot key={idx} index={idx} className="shad-otp-slot [--ring:--color-brand-100] 
-" />
+              <InputOTPSlot
+                key={idx}
+                index={idx}
+                className="shad-otp-slot [--ring:--color-brand-100] 
+"
+              />
             ))}
           </InputOTPGroup>
         </InputOTP>

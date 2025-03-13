@@ -22,8 +22,6 @@ const FileUploader = ({ ownerId, accountId, className }: FileUploaderProps) => {
   const [files, setFiles] = useState<File[]>([])
   const pathname = usePathname()
 
-  
-  
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       // Do something with the files
@@ -44,7 +42,7 @@ const FileUploader = ({ ownerId, accountId, className }: FileUploaderProps) => {
             ),
           })
         }
-        
+
         return uploadFile({ file, ownerId, accountId, path: pathname })
       })
 
@@ -131,7 +129,7 @@ const Thumbnail = ({
         alt="thumbnail-image"
         width={100}
         height={100}
-        className={cn('size-8 object--contain', imageClassName, isImage && 'thumbnail-image')}
+        className={cn('object--contain size-8', imageClassName, isImage && 'thumbnail-image')}
       />
     </figure>
   )

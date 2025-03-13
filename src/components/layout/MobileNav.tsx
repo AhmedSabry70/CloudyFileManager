@@ -34,12 +34,12 @@ const MobileNav = ({ ownerId, accountId, fullName, avatar, email }: MobileNavPro
       />
 
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger className='cursor-pointer'>
+        <SheetTrigger className="cursor-pointer">
           <Image src={'/assets/icons/menu.svg'} alt="search" width={30} height={30} />
         </SheetTrigger>
 
         <SheetContent className="shad-sheet h-screen px-3">
-          <SheetTitle >
+          <SheetTitle>
             <div className="header-user">
               <Image
                 src={avatar}
@@ -53,35 +53,34 @@ const MobileNav = ({ ownerId, accountId, fullName, avatar, email }: MobileNavPro
                 <p className="caption">{email}</p>
               </div>
             </div>
-            <Separator className="mb-4 bg-light-200/20 " />
+            <Separator className="bg-light-200/20 mb-4 " />
           </SheetTitle>
 
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">
-            {navItems.map(({name,icon,url}) => (
-            <Link key={name} href={url} className='lg:w-full'>
-            
-            <li 
-            className={cn("mobile-nav-item",
-              pathname === url && 'shad-active'
-            )}
-            >
-              <Image src={icon} alt={name} width={24} height={24}
-              className={cn('nav-icon', pathname=== url && 'nav-icon-active')}
-              /> 
-              <p >{name}</p>
-            </li>
-            </Link>
-          ))}
+              {navItems.map(({ name, icon, url }) => (
+                <Link key={name} href={url} className="lg:w-full">
+                  <li className={cn('mobile-nav-item', pathname === url && 'shad-active')}>
+                    <Image
+                      src={icon}
+                      alt={name}
+                      width={24}
+                      height={24}
+                      className={cn('nav-icon', pathname === url && 'nav-icon-active')}
+                    />
+                    <p>{name}</p>
+                  </li>
+                </Link>
+              ))}
             </ul>
           </nav>
 
-          <Separator className='my-5 bg-light-200/20' />
+          <Separator className="bg-light-200/20 my-5" />
 
           <div className="flex flex-col justify-between gap-5 pb-5">
-            <FileUploader ownerId='iddferer' accountId='idfasf'/>
-            <Button type='submit' className='mobile-sign-out-button' onClick={()=>{}}>
-              <Image src={'/assets/icons/logout.svg'} alt='logout-icon' width={24} height={24}/>
+            <FileUploader ownerId="iddferer" accountId="idfasf" />
+            <Button type="submit" className="mobile-sign-out-button" onClick={() => {}}>
+              <Image src={'/assets/icons/logout.svg'} alt="logout-icon" width={24} height={24} />
               <p>Logout</p>
             </Button>
           </div>

@@ -3,8 +3,6 @@ import React, { ReactNode } from 'react'
 import Image from 'next/image'
 import Logo from '@/components/Logo'
 
-
-
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex min-h-screen">

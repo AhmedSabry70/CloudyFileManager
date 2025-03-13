@@ -69,7 +69,6 @@
 
   body {
     @apply text-dark-200 min-h-screen bg-white;
-    
   }
 
   .recharts-responsive-container {
@@ -198,16 +197,15 @@
   }
   .shad-alert-dialog {
     @apply max-w-[95%] space-y-4 rounded-xl bg-white px-4 py-10 outline-none sm:w-fit md:rounded-[30px] md:!px-20;
-    
   }
   .shad-submit-btn {
-    @apply bg-brand hover:bg-brand-100 rounded-full text-[14px] leading-[20px] font-medium transition-all cursor-pointer;
+    @apply bg-brand hover:bg-brand-100 cursor-pointer rounded-full text-[14px] leading-[20px] font-medium transition-all;
   }
   .shad-otp {
     @apply flex w-full justify-between gap-1 sm:gap-2;
   }
   .shad-otp-slot {
-    @apply  ring-brand shadow-drop-1 text-brand-100 border-light-300 flex size-12 justify-center gap-5 !rounded-xl border-2 text-[40px] !font-medium md:size-16;
+    @apply ring-brand shadow-drop-1 text-brand-100 border-light-300 flex size-12 justify-center gap-5 !rounded-xl border-2 text-[40px] !font-medium md:size-16;
   }
 
   .shad-sheet {
@@ -395,7 +393,7 @@
   }
 
   .error-toast {
-    @apply !bg-red !rounded-[10px] ;
+    @apply !bg-red !rounded-[10px];
   }
 
   /* Header */
@@ -462,7 +460,7 @@
     @apply text-brand mt-9 flex-1 gap-1 text-[16px] leading-[24px] font-semibold;
   }
   .sidebar-nav-item {
-    @apply text-light-100 flex h-[52px] items-center justify-center gap-4 rounded-xl text-[16px] leading-[24px] font-semibold lg:w-full lg:justify-start lg:rounded-full lg:px-[30px] hover:bg-brand-100/10;
+    @apply text-light-100 hover:bg-brand-100/10 flex h-[52px] items-center justify-center gap-4 rounded-xl text-[16px] leading-[24px] font-semibold lg:w-full lg:justify-start lg:rounded-full lg:px-[30px];
   }
   .sidebar-user-info {
     @apply bg-brand/10 text-light-100 mt-4 flex items-center justify-center gap-2 rounded-full p-1 lg:justify-start lg:p-3;

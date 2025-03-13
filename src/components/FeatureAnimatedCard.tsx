@@ -7,8 +7,6 @@ import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { animate, motion } from 'framer-motion'
 
-
-
 //import { GoCopilot } from "react-icons/go"
 
 export function FeatureAnimatedCard() {
@@ -146,14 +144,7 @@ export const CardSkeletonContainer = ({
   showGradient?: boolean
 }) => {
   return (
-    <div
-      className={cn(
-        'z-40 h-[15rem] rounded-xl md:h-[20rem] ',
-        className,
-        showGradient &&
-          ' ',
-      )}
-    >
+    <div className={cn('z-40 h-[15rem] rounded-xl md:h-[20rem] ', className, showGradient && ' ')}>
       {children}
     </div>
   )

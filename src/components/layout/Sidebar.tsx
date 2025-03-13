@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 
 const Sidebar = () => {
-  const pathname= usePathname()
+  const pathname = usePathname()
   const email = 'mrsabry134@gmail.com'
   const fullName = 'Ahmed Sabry'
   return (
@@ -32,28 +32,39 @@ const Sidebar = () => {
 
       <nav className="sidebar-nav">
         <ul className="flex flex-1 flex-col gap-6">
-          {navItems.map(({name,icon,url}) => (
-            <Link key={name} href={url} className='lg:w-full'>
-            
-            <li 
-            className={cn("sidebar-nav-item",
-              pathname === url && 'shad-active'
-            )}
-            >
-              <Image src={icon} alt={name} width={24} height={24}
-              className={cn('nav-icon', pathname=== url && 'nav-icon-active')}
-              /> 
-              <p className='hidden lg:block'>{name}</p>
-            </li>
+          {navItems.map(({ name, icon, url }) => (
+            <Link key={name} href={url} className="lg:w-full">
+              <li className={cn('sidebar-nav-item', pathname === url && 'shad-active')}>
+                <Image
+                  src={icon}
+                  alt={name}
+                  width={24}
+                  height={24}
+                  className={cn('nav-icon', pathname === url && 'nav-icon-active')}
+                />
+                <p className="hidden lg:block">{name}</p>
+              </li>
             </Link>
           ))}
         </ul>
       </nav>
 
-      <Image src={'/assets/images/files-2.png'} alt='logo' width={506} height={418} className='w-full'/>
+      <Image
+        src={'/assets/images/files-2.png'}
+        alt="logo"
+        width={506}
+        height={418}
+        className="w-full"
+      />
 
       <div className="sidebar-user-info">
-        <Image src={'/assets/images/avatar.png'} alt='user profile' width={48} height={48} className='sidebar-user-avatar'/>
+        <Image
+          src={'/assets/images/avatar.png'}
+          alt="user profile"
+          width={48}
+          height={48}
+          className="sidebar-user-avatar"
+        />
         <div className="hidden lg:block">
           <p className="subtitle-2 capitalize">{fullName}</p>
           <p className="caption">{email}</p>
@@ -62,9 +73,5 @@ const Sidebar = () => {
     </aside>
   )
 }
-
-
-
-
 
 export default Sidebar
