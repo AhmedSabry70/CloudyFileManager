@@ -18,6 +18,7 @@ const eslintConfig = [
     'plugin:prettier/recommended',
     'prettier',
   ),
+  
   {
     rules: {
       'no-dupe-imports': 'off',

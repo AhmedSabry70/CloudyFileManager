@@ -116,6 +116,7 @@
 
   &::-webkit-scrollbar-thumb:hover {
     background: #fa7275;
+   
   }
 }
 
@@ -245,16 +246,17 @@
 
   /* Dashboard */
   .dashboard-container {
-    @apply mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 xl:gap-10;
+    /* max-w-7xl */
+    @apply mx-auto grid  grid-cols-1 gap-6 md:grid-cols-2 xl:gap-10;
   }
   .dashboard-summary-list {
-    @apply mt-6 grid grid-cols-1 gap-4 xl:mt-10 xl:grid-cols-2 xl:gap-9;
+    @apply mt-10 grid grid-cols-1 gap-4 xl:mt-10 xl:grid-cols-2 xl:gap-9;
   }
   .dashboard-summary-card {
-    @apply relative mt-6 rounded-[20px] bg-white p-5 transition-all hover:scale-105;
+    @apply relative /* mt-6 */ rounded-[20px]  /* p-5 */ transition-all hover:scale-105;
   }
   .summary-type-icon {
-    @apply absolute top-[-25px] -left-3 z-10 w-[190px] object-contain;
+    @apply absolute top-0 left-3 z-10 w-[190px] object-contain;
   }
   .summary-type-size {
     @apply relative z-20 w-full text-right text-[18px] leading-[20px] font-medium;
@@ -424,7 +426,7 @@
     @apply flex flex-1 flex-col gap-4;
   }
   .mobile-nav-item {
-    @apply text-light-100 flex h-[52px] w-full items-center justify-start gap-4 rounded-full px-6 text-[16px] leading-[24px] font-semibold;
+    @apply text-light-100 hover:bg-brand-100/10  flex h-[52px] w-full items-center justify-start gap-4 rounded-full px-6 text-[16px] leading-[24px] font-semibold;
   }
   .mobile-sign-out-button {
     @apply bg-brand/10 text-brand hover:bg-brand/20 flex h-[52px] w-full items-center gap-4 rounded-full px-6 text-[16px] leading-[24px] font-semibold shadow-none transition-all;
@@ -470,7 +472,7 @@
   }
 
   .shad-active {
-    @apply bg-brand shadow-drop-2 text-white;
+    @apply bg-brand shadow-drop-2 text-white hover:bg-brand-100;
   }
 
   /* Sort */
@@ -483,10 +485,10 @@
 
   /* Thumbnail */
   .thumbnail {
-    @apply bg-brand/10 size-[50px] min-w-[50px] overflow-hidden rounded-full text-[16px] leading-[24px] font-medium;
+    @apply bg-brand/10 size-[50px] min-w-[50px] overflow-hidden rounded-full text-[16px] leading-[24px] font-medium flex items-center justify-center;
   }
   .thumbnail-image {
-    @apply size-full object-cover object-center;
+    @apply !size-full object-cover object-center;
   }
 }
 
@@ -607,4 +609,140 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+.card_wrapper {
+  position: relative;
+  @apply bg-red-500
+}
+
+.card-0 {
+  position: relative;
+  filter: drop-shadow(0 0 5px #00ec72ca);
+  background-color: yellow;
+  @apply bg-orange-300
+}
+
+.card-image-with-svg-mask {
+  width: 80vw;
+  height: 80vh;
+  background-image: url("/assets/images/chameleons.avif");
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  border-bottom-left-radius: 2.5rem;
+  position: relative;
+}
+
+
+.card-image-mask {
+  
+    width: 100%;
+    height: 100%;
+    /* background-image: url("/assets/images/chameleons.avif");
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll; */
+    border-top-left-radius: 2.5rem;
+    border-top-right-radius: 2.5rem;
+    border-bottom-left-radius: 2.5rem;
+    border-bottom-right-radius: 2.5rem;
+    background-color: white;
+
+    position: relative;
+
+/* mask image */
+
+    -webkit-mask: url("/assets/images/Union.svg") center / cover no-repeat;
+    mask-size: 100%, 100%;
+    mask-position: top center, bottom right;
+    mask-composite: exclude;
+
+}
+
+
+
+
+/* mask image */
+.card-image-with-svg-mask {
+  -webkit-mask: url("/assets/images/top-center.png") center / contain no-repeat, url("/assets/images/bottom-right.png") center / contain no-repeat, linear-gradient(#000000 0 0);
+  mask-size: 22rem, 30rem;
+  mask-position: top center, bottom right;
+  mask-composite: exclude;
+}
+
+
+
+p.text {
+  color: #ffff;
+  width: 350px;
+  position: absolute;
+  right: 5%;
+  top: 2%;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.button {
+  position: absolute;
+  background-color: #a9ff7d;
+  border-radius: 1.5rem;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-center {
+  width: 240px;
+  height: 95px;
+  top: 1%;
+  right: 0%;
+  left: 0%;
+  margin: 0 auto;
+}
+
+.top-center .text {
+  font-size: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: url("/assets/images/chameleons.avif") top / cover no-repeat;
+  background-clip: text;
+  color: transparent;
+}
+
+.bottom-right {
+  width: 380px;
+  height: 160px;
+  border-radius: 2.5rem;
+  bottom: 2%;
+  right: 1%;
+}
+
+.bottom-right .text {
+  font-size: 19px;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
+
+.fa-quote-left, .fa-quote-right {
+  position: absolute;
+  font-size: 40px;
+  color: rgb(245,245,245);
+}
+
+.fa-quote-left {
+  top: -35px;
+  left: -10px;
+}
+
+.fa-quote-right {
+  right: 20px;
+  bottom: -30px;
 }

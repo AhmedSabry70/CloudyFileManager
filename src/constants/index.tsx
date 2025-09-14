@@ -20,6 +20,26 @@ export const navItems = [
     url: '/media',
   },
   {
+    name:"archives",
+    icon:'/assets/icons/archive.svg',
+    url:'/archives'
+  },
+  {
+    name:"executables",
+    icon:'/assets/icons/executable.svg',
+    url:'/executables'
+  },
+  {
+    name:"fonts",
+    icon:'/assets/icons/font.svg',
+    url:'/fonts'
+  },
+  {
+    name:"code",
+    icon:'/assets/icons/code.svg',
+    url:'/code'
+  },
+  {
     name: 'Others',
     icon: '/assets/icons/others.svg',
     url: '/others',

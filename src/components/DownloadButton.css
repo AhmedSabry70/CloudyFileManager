@@ -1,0 +1,14 @@
+@keyframes downloadAnimation {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(100px, -200px);
+      opacity: 0;
+    }
+  }
+  
+  .animate-download {
+    animation: downloadAnimation 10s forwards;
+  }

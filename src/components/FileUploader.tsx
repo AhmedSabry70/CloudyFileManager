@@ -7,9 +7,10 @@ import Image from 'next/image'
 
 import { MAX_FILE_SIZE } from '@/constants'
 import { uploadFile } from '@/lib/actions/file.actions'
-import { cn, convertFileToURL, getFileIcon, getFileType } from '@/lib/utils'
+import { cn, convertFileToURL, getFileType } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 import { toast } from 'sonner'
+import Thumbnail from './Thumbnail'
 import { Button } from './ui/button'
 
 type FileUploaderProps = {
@@ -19,8 +20,8 @@ type FileUploaderProps = {
 }
 
 const FileUploader = ({ ownerId, accountId, className }: FileUploaderProps) => {
-  const [files, setFiles] = useState<File[]>([])
   const pathname = usePathname()
+  const [files, setFiles] = useState<File[]>([])
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
@@ -43,7 +44,15 @@ const FileUploader = ({ ownerId, accountId, className }: FileUploaderProps) => {
           })
         }
 
-        return uploadFile({ file, ownerId, accountId, path: pathname })
+        return uploadFile({ file, ownerId, accountId, path: pathname }).then(
+          (uploadedFile) => {
+            if (uploadedFile) {
+              setFiles((prevFiles) =>
+                prevFiles.filter((f) => f.name !== file.name),
+              );
+            }
+          },
+        );
       })
 
       await Promise.all(uploadPromises)
@@ -68,7 +77,7 @@ const FileUploader = ({ ownerId, accountId, className }: FileUploaderProps) => {
           <h4 className="h4 text-light-100">Uploading</h4>
 
           {files.map((file, idx) => (
-            <FileComp key={file.name + '-' + idx} file={file} handleRemoveFile={handleRemoveFile} />
+            <FileComp key={`${file.name}-${idx}`} file={file} handleRemoveFile={handleRemoveFile} />
           ))}
         </ul>
       )}
@@ -108,29 +117,4 @@ const FileComp = ({
   )
 }
 
-const Thumbnail = ({
-  type,
-  extension,
-  url,
-  className,
-  imageClassName,
-}: {
-  type: string
-  extension: string
-  url: string
-  imageClassName?: string
-  className?: string
-}) => {
-  const isImage = type === 'image' && extension !== 'svg'
-  return (
-    <figure className={cn('thumbnail', className)}>
-      <Image
-        src={isImage ? url : getFileIcon(extension, type)}
-        alt="thumbnail-image"
-        width={100}
-        height={100}
-        className={cn('object--contain size-8', imageClassName, isImage && 'thumbnail-image')}
-      />
-    </figure>
-  )
-}
+

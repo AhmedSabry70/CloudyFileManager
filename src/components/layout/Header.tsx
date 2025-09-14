@@ -1,19 +1,28 @@
-import React from 'react'
 
 import Image from 'next/image'
 
+import { signOutUser } from '@/lib/actions/user.actions'
 import FileUploader from '../FileUploader'
 import Search from '../Search'
 import { Button } from '../ui/button'
 
-const Header = () => {
+const Header = ({ ownerId, accountId }:{
+  ownerId: string
+  accountId: string
+}) => {
   return (
     <header className="header">
       <Search />
       <div className="header-wrapper flex items-center space-x-2">
-        <FileUploader />
-        <form>
-          <Button type="submit" className="sign-out-button ">
+        <FileUploader ownerId={ownerId} accountId={accountId}/>
+        <form
+        action={async () => {
+          "use server";
+
+          await signOutUser();
+        }}
+        >
+          <Button type="submit" className="sign-out-button" >
             <Image
               src={'assets/icons/logout.svg'}
               alt="sign out"

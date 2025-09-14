@@ -3,14 +3,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { navItems } from '@/constants'
+import { avatarPlaceholderUrl, navItems } from '@/constants'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 
-const Sidebar = () => {
+const Sidebar = ({email,fullName,avatar}:{email:string,fullName:string,avatar?:string}) => {
   const pathname = usePathname()
-  const email = 'mrsabry134@gmail.com'
-  const fullName = 'Ahmed Sabry'
+
   return (
     <aside className="sidebar">
       <Link href={'/'}>
@@ -30,11 +29,11 @@ const Sidebar = () => {
         />
       </Link>
 
-      <nav className="sidebar-nav">
+      <nav className="sidebar-nav overflow-auto mb-8">
         <ul className="flex flex-1 flex-col gap-6">
           {navItems.map(({ name, icon, url }) => (
             <Link key={name} href={url} className="lg:w-full">
-              <li className={cn('sidebar-nav-item', pathname === url && 'shad-active')}>
+              <li className={cn('sidebar-nav-item ', pathname === url && 'shad-active')}>
                 <Image
                   src={icon}
                   alt={name}
@@ -59,7 +58,7 @@ const Sidebar = () => {
 
       <div className="sidebar-user-info">
         <Image
-          src={'/assets/images/avatar.png'}
+          src={avatar||avatarPlaceholderUrl}
           alt="user profile"
           width={48}
           height={48}

@@ -1,21 +1,21 @@
 import Header from '@/components/layout/Header'
 import MobileNav from '@/components/layout/MobileNav'
 import Sidebar from '@/components/layout/Sidebar'
-import React, { ReactNode } from 'react'
+import { getCurrentUser } from '@/lib/actions/user.actions'
+import { redirect } from 'next/navigation'
+import { ReactNode } from 'react'
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = async({ children }: { children: ReactNode }) => {
+  const currentUser = await getCurrentUser()
+  if(!currentUser) return redirect('/sign-in')
   return (
     <div className="flex h-screen">
-      <Sidebar />
+      <Sidebar {...currentUser} />
       <section className="flex h-full flex-1 flex-col">
         <MobileNav
-          fullName="Ahmed Sabry"
-          email="mrsabry134@gmail.com"
-          ownerId="2342332"
-          accountId="234234"
-          avatar="/assets/images/avatar.png"
+          {...currentUser}
         />
-        <Header />
+        <Header ownerId={currentUser.$id} accountId={currentUser.accountId}/>
         <div className="main-content">{children}</div>
       </section>
     </div>

@@ -2,13 +2,13 @@
 
 import { createAdminClient, createSessionClient } from '@/lib/appwrite'
 
-import { Query, ID } from 'node-appwrite'
-import { parseStringify } from '@/lib/utils'
-import { cookies } from 'next/headers'
-import { avatarPlaceholderUrl } from '@/constants'
-import { redirect } from 'next/navigation'
 import { appwriteConfig } from '@/config'
+import { avatarPlaceholderUrl } from '@/constants'
+import { parseStringify } from '@/lib/utils'
 import { handleError } from '@/middleware/error.middleware'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import { ID, Query } from 'node-appwrite'
 
 const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient()
@@ -71,12 +71,13 @@ export const verifySecret = async ({
 
     const session = await account.createSession(accountId, secret)
 
-    ;(await cookies()).set('appwrite-session', session.secret, {
-      path: '/',
-      httpOnly: true,
-      sameSite: 'strict',
-      secure: true,
-    })
+      const isProd = process.env.NODE_ENV === 'production';
+      (await cookies()).set('appwrite-session', session.secret, {
+        path: '/',
+        httpOnly: true,
+        sameSite: isProd ? 'none' : 'lax',
+        ...(isProd && { secure: true }),
+      })
 
     return parseStringify({ sessionId: session.$id })
   } catch (error) {
@@ -110,5 +111,28 @@ export const signOutUser = async () => {
     handleError(error, 'Failed to sign out user')
   } finally {
     redirect('/sign-in')
+  }
+}
+
+
+export const getCurrentUser = async () => {
+  
+  try {
+    const {databases,account} = await createSessionClient()
+    const res = await account.get()  
+    const user = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersCollectionId,
+      [
+        Query.equal('accountId',res.$id)
+      ]
+    )
+    
+if(user.total < 0) return null
+return parseStringify(user.documents[0])
+    
+    
+  } catch (err) {
+    console.log(err);
   }
 }

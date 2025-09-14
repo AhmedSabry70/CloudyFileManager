@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import Image from 'next/image'
 
 import { cn } from '@/lib/utils'
-import { animate, motion } from 'framer-motion'
+import { animate } from 'framer-motion'
+import { motion } from "motion/react"
 
 //import { GoCopilot } from "react-icons/go"
 

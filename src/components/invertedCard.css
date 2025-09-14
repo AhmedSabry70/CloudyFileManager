@@ -1,0 +1,42 @@
+[class^="invert"], [class^="invert"]::before{
+    backface-visibility: hidden;
+    transform: translateZ(0) translate(0, 0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: transform, clip-path;}
+
+[class^="invert"] {clip-path: inset(0);
+    will-change: transform, clip-path;}
+
+.invert-1::before {
+    BORDER-RADIUS: 25px 0px 0px 25px;
+    content: ''; position: absolute;
+    background-color: transparent;
+    box-shadow: 0 0 0 50px #FFF, 0 0 0 0 #FFF;
+    pointer-events: none; clip-path: inset(0);}
+
+.invert-3::before {
+    BORDER-RADIUS: 0px 25px 0px 0px;
+    content: ''; position: absolute;
+    background-color: transparent;
+    box-shadow: 0 0 0 50px #FFF, 0 0 0 0 #FFF;
+    pointer-events: none; clip-path: inset(0);}
+
+.invert-4 {
+    BORDER-RADIUS: 0 0 0 25px;
+    BACKGROUND-COLOR: #FFF;
+    will-change: transform, clip-path;}
+    
+@media only screen and (max-width: 500px) {
+    .invert-4 {
+        BORDER-RADIUS: 0 0 0 20px;
+        BACKGROUND-COLOR: #FFF;
+        will-change: transform, clip-path;}
+}
+
+.invert-6::before {
+    BORDER-RADIUS: 0px 25px 25px 0px;
+    content: ''; position: absolute;
+    background-color: transparent;
+    box-shadow: 0 0 0 50px #FFF, 0 0 0 0 #FFF;
+    pointer-events: none; clip-path: inset(0);}

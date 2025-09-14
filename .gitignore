@@ -157,3 +157,4 @@ jest.config.ts
 *.un~
 *.bak~
 
+.DS_Store

@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { toast } from "sonner"
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -45,7 +45,16 @@ const AuthForm = ({ type }: { type: FormType }) => {
     try {
       if (type === 'sign-in') {
         const { accountId, error } = await signInUser(values as SignIn)
-        if (error) console.log(error)
+        if (error)  return toast.error('Login Error :', {
+          className: 'error-toast !text-white !text-[17px] !font-bold',
+          classNames: { icon: 'text-white' },
+          position: 'bottom-center',
+          description: (
+            <p className="body-2 text-white">
+              <span className="font-semibold">{error}</span> 
+            </p>
+          ),
+        })
 
         setAccountId(accountId)
         setShowOTPModal(true)
@@ -57,6 +66,17 @@ const AuthForm = ({ type }: { type: FormType }) => {
     } catch (err) {
       console.error(err)
       setErrMsg('Failed to process your request. Please try again.')
+      toast.error('', {
+        className: 'error-toast',
+        classNames: { icon: 'text-white' },
+        position: 'bottom-center',
+        description: (
+          <p className="body-2 text-white">
+            <span className="font-semibold">Failed to process your request. Please try again.</span> 
+          </p>
+        ),
+      })
+      
     } finally {
       setIsLoading(false)
     }

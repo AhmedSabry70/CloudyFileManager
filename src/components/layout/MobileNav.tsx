@@ -13,14 +13,14 @@ import { Separator } from '../ui/separator'
 import { Button } from '../ui/button'
 
 type MobileNavProps = {
-  ownerId?: string
+  $id: string
   accountId: string
   fullName: string
   avatar: string
   email: string
 }
 
-const MobileNav = ({ ownerId, accountId, fullName, avatar, email }: MobileNavProps) => {
+const MobileNav = ({ $id:ownerId, accountId, fullName, avatar, email }: MobileNavProps) => {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   return (
@@ -78,7 +78,7 @@ const MobileNav = ({ ownerId, accountId, fullName, avatar, email }: MobileNavPro
           <Separator className="bg-light-200/20 my-5" />
 
           <div className="flex flex-col justify-between gap-5 pb-5">
-            <FileUploader ownerId="iddferer" accountId="idfasf" />
+            <FileUploader ownerId={ownerId} accountId={accountId} />
             <Button type="submit" className="mobile-sign-out-button" onClick={() => {}}>
               <Image src={'/assets/icons/logout.svg'} alt="logout-icon" width={24} height={24} />
               <p>Logout</p>
